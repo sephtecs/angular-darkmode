@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginInfo } from './models/LoginInfo';
 import { LoginService } from './services/login.service';
+import { DarkModeService } from "angular-dark-mode";
+import { Observable } from "rxjs";
 import { User } from './models/User';
 import { NewPostService } from './services/new-post.service';
 
@@ -13,18 +15,23 @@ import { NewPostService } from './services/new-post.service';
 })
 export class AppComponent {
   title = 'RevSpaceWebApp';
-  constructor(private loginService:LoginService){}
-  isLoggedIn()
-  {
-    return(this.loginService.getLoginInfo() != null);
+  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
+
+  constructor(private loginService: LoginService, private darkModeService: DarkModeService) { }
+  isLoggedIn() {
+    return (this.loginService.getLoginInfo() != null);
   }
-  getUserName():string{
+  getUserName(): string {
     let user = this.loginService.getLoginInfo().user;
     return user.firstName + " " + user.lastName;
   }
-  getUserId(){
+  getUserId() {
     let user = this.loginService.getLoginInfo().user;
     return user.userId;
+  }
+
+  onToggle(): void {
+    this.darkModeService.toggle();
   }
 }
 

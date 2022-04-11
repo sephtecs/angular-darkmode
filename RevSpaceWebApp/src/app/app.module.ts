@@ -18,6 +18,8 @@ import { DatePipe } from './pipes/date.pipe';
 
 import { EditUserProfileComponent } from './components/edit-user-profile/edit-user-profile.component';
 import { LeavingEditAlertComponent } from './components/leaving-edit-alert/leaving-edit-alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -34,13 +36,15 @@ import { LeavingEditAlertComponent } from './components/leaving-edit-alert/leavi
     EditUserProfileComponent,
     LeavingEditAlertComponent
   ],
-  
+
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    BrowserAnimationsModule
   ],
   providers: [ImageService],
   bootstrap: [AppComponent]
